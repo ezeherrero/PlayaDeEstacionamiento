@@ -2,12 +2,9 @@ package playafero;
 
 import javax.swing.*;
 
-
-public class ControlEstacionamiento
-{
+public class ControlEstacionamiento{
     
     Estacionamiento estacionar = new Estacionamiento();
-
 
     public void estacionarAuto() 
     {
@@ -22,7 +19,7 @@ public class ControlEstacionamiento
                 boolean pudoEstacionar = estacionar.estacionarAuto(nuevo);
                 if (pudoEstacionar) 
                 {
-                   JOptionPane.showMessageDialog(null,"El carro fue estacionado exitosamente.");
+                   JOptionPane.showMessageDialog(null,"El auto fue estacionado exitosamente.");
                 }
                 else 
                 {

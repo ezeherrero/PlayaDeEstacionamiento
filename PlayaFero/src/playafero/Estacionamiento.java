@@ -2,12 +2,10 @@ package playafero;
 
 public class Estacionamiento 
 {
- 
- private final Auto[] autos = new Auto[10];
+private final Auto[] autos = new Auto[10];
 
-
- public boolean estacionarAuto(Auto auto) 
- {
+public boolean estacionarAuto(Auto auto) 
+{
   for (int i = 0; i < autos.length; i++) 
   {
    if (autos[i] == null)
@@ -17,10 +15,10 @@ public class Estacionamiento
    }
   }
   return false;
- }
+}
  
 public boolean sacarAuto(String patente)
- {
+{
   for (int i = 0; i < autos.length; i++) 
   {
    if (autos[i] != null)
@@ -33,8 +31,7 @@ public boolean sacarAuto(String patente)
    }
   }
   return false;
- }
- 
+}
 public Auto buscarAuto(String patente)
  {
      for (Auto auto : autos) {
@@ -46,6 +43,4 @@ public Auto buscarAuto(String patente)
      }
   return null;
  }
-
 } 
-

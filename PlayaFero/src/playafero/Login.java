@@ -1,19 +1,25 @@
 package playafero;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
 public class Login {
-    String user;
-    String pass;
+    
+    private String user;
+    private String pass;
+    private JPasswordField fpass = new JPasswordField();
+    private JTextField fuser = new JTextField();
 
+    public Login(){
+    
+    }
+    
     public Login(String user, String pass) {
         this.user = user;
         this.pass = pass;
@@ -38,11 +44,9 @@ public class Login {
         labPass.setBounds(20, 90, 100, 30);
         labPass.setForeground(Color.black);
 
-        JTextField fuser = new JTextField();
         fuser.setBounds(110, 52, 170, 25);
         fuser.setText(user);
 
-        JPasswordField fpass = new JPasswordField();
         fpass.setBounds(110, 92, 170, 25);
         fpass.setText(pass);
 
@@ -62,8 +66,8 @@ public class Login {
         checkbox.setBackground(Color.orange);
         checkbox.setForeground(Color.black);
         checkbox.setMnemonic('R');
-        checkbox.setSelected(true);     
-                
+        checkbox.setSelected(true);
+
         //Acciones
         fuser.addActionListener((e) -> {
             fpass.requestFocus();
@@ -113,32 +117,26 @@ public class Login {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
+    
     public void pasarVentana(JFrame frame, JCheckBox checkbox, JTextField fuser, JPasswordField fpass) {
-        if (!checkbox.isSelected()) {
-            this.user = "";
-            this.pass = "";
-        } else {
-            this.user = fuser.getText();
-            this.pass = String.valueOf(fpass.getPassword());
+        String clavedef = String.valueOf(fpass.getPassword());
+        if (fuser.getText().equals("a") && clavedef.equals("a")) {
+            if (!checkbox.isSelected()) {
+                this.user = "";
+                this.pass = "";
+            }else{
+                this.user = fuser.getText();
+                this.pass = String.valueOf(fpass.getPassword());
+            }
+            frame.dispose();
+            
+            java.awt.EventQueue.invokeLater(() -> {
+            
+            new ControlEstacionamient().setVisible(true);
+       
+        });
+        }else{
+            showMessageDialog(null, "El usuario o la contraseña es incorrecta");
         }
-        frame.dispose();
-        ControlEstacionamiento c = new ControlEstacionamiento ();
-        c.menu();
-        
-    }
-    
-//    public void actionPerformed(ActionEvent ae){
-//        if ((fuser.getText().equals("trabajdor")) && (fpass.getText().equals("playaestacionamiento"))){
-//            Estacionamiento playa;
-//            playa = new Estacionamiento();       
-//        }else{
-//            
-//        }
-//    }
-    
-    @Override
-    public String toString() {
-        return "Login{" + "user=" + user + ", pass=" + pass + '}';
     }
 }
